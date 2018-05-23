@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './landing.css';
+import Pledge from './pledge.js';
+import { Link } from 'react-router-dom';
+// i removed the handleChange function because it's superfluous. 
+// The buttons will just directly link to the appropriate components instead.
+// I need to come back and add links to the log in and learn more buttons once the auth and info pages are complete.
 
 class Landing extends Component {
 	constructor() {
 		super();
-		this.handleChange = this.handleChange.bind(this);
+
 	}
 	render() {
 		// above all of this, there will be a navbar. reference the instagram post container and overall
@@ -19,7 +24,6 @@ class Landing extends Component {
 						className="button"
 						value="LOG IN"
 						type="submit"
-						onClick={this.handleChange}
 					/>
 				</div>
 				<h1>Take the Pledge</h1>
@@ -27,17 +31,17 @@ class Landing extends Component {
 					Giving monthly to a pool that will stand ready to proactively give 
 					targeted donations in-time and in-full. No waiting.
 				</p>
-				<input 
-					className="button"
-					value="DONATE"
-					type="submit"
-					onClick={this.handleChange}
-				/>
+				<Link to="/pledge">
+					<input 
+						className="button"
+						value="DONATE"
+						type="submit"
+					/>
+				</Link>
 				<input 
 					className="button"
 					value="LEARN MORE"
 					type="submit"
-					onClick={this.handleChange}
 				/>
 				<div className="LandingImage">
 					<img className="Landing_imageUrl" src="" placeholder="Landing Image"/>

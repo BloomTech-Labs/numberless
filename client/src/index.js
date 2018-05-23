@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Pledge from './components/pledge';
 import Landing from './components/landing';
 import ThankYou from './components/thankyou';
+import Voting from './components/voting';
 
 ReactDOM.render(
 	<Router>
@@ -14,6 +15,7 @@ ReactDOM.render(
 			<Route exact path="/pledge" component={Pledge}/>
 			<Route exact path="/landing" component={Landing}/>
 			<Route exact path="/thankyou" component={ThankYou}/>
+			<Route exact path="/voting" component={Voting}/>
 		</div>
 	</Router>
 	, 

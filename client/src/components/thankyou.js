@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './thankyou.css';
+import { Link } from 'react-router-dom';
+import Landing from './landing.js';
 
 class ThankYou extends Component {
 	constructor() {
@@ -14,12 +16,14 @@ class ThankYou extends Component {
 				<h1>Thank You!</h1>
 				<h3>YOUR VOTE HAS BEEN CAST</h3>
 				<p>This months donation has been allocated to <p>[ insert name of selected charity here. ]</p></p>
-				<input 
-					className="button"
-					value="RETURN HOME"
-					type="submit"
-					onClick={this.handleChange}
-				/>
+				<Link to="/landing">
+					<input 
+						className="button"
+						value="RETURN HOME"
+						type="submit"
+					/>
+				</Link>
+				
 			</div>
 		)
 	}
