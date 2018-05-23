@@ -31,12 +31,11 @@ const VotingCard = (props) => {
 	return (
 		<div className="VotingCard">
 			{props.charity.map((c => {
+				console.log(c);
 				return (
 					<div className="VotingCard">
 						<div className="VotingCard_image">
-							<a href={c.href}>
-								<img width="" height ="" src={c.image}/>
-							</a>
+							<img src={c.img} width="400" height="100"/>
 						</div>
 						<div className="VotingCard_header">
 							<h4>{c.name}</h4>
