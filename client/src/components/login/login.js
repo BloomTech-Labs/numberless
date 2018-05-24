@@ -8,6 +8,9 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class Login extends Component {
 
+  // The verifyUser function sends the info out to the server, where the password is checked against the 
+  // encrypted password stored in the database
+
   verifyUser = (email, pass) => {
     const user = {email: email, password: pass};
     const activeUser = axios.post(`${SERVER_URL}/login/`, user);
@@ -16,6 +19,7 @@ class Login extends Component {
         if (returnedUser.data.email) {
           sessionStorage.setItem('loggedIn', 'true')
           sessionStorage.setItem('userEmail', `${returnedUser.data.email}`);
+          this.props.history.push('voting')
         }
       })
   }
@@ -37,7 +41,7 @@ class Login extends Component {
           this.verifyUser(email, pass); 
         }}>Sign In</Button>
         <Button onClick={ () => {
-          this.props.history.push('NewUser');
+          this.props.history.push('newuser');
         }}>Sign Up</Button>
       </Form>
     );
