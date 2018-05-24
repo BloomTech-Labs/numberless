@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './voting.css';
 import VotingCard from './votingcard.js'
-import { dummyData } from '/Users/e144574/Desktop/Camila Programming/LAMBDA/CS 6/capstone/numberless/client/src/dummydata.js';
+import { dummyData } from '../dummydata.js';
 // you will have to insert a voting-card component
 // similar to the way you had a post container in you instagram app
 // the voting-card component will go through the database 
