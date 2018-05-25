@@ -8,6 +8,8 @@ import Pledge from './components/pledge';
 import Landing from './components/landing';
 import ThankYou from './components/thankyou';
 import Voting from './components/voting';
+import Info from './components/info';
+
 import { Login, NewUser } from './components';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -32,5 +34,6 @@ ReactDOM.render(
 			</div>
 		</Router>
 	</StripeProvider>, 
+
 	document.getElementById('root'));
 registerServiceWorker();

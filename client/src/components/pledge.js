@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './pledge.css';
+import './styles/pledge.css';
 
 class Pledge extends Component {
 	constructor() {

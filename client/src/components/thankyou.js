@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './thankyou.css';
+import './styles/thankyou.css';
 import { Link } from 'react-router-dom';
 import Landing from './landing.js';
 
