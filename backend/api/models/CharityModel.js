@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-// Create Charities Schema
-
 const CharitySchema = new mongoose.Schema({
   charity: {
     type: String,
@@ -21,4 +19,4 @@ const CharitySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Charities", CharitySchema);
+module.exports = mongoose.model('Charity', CharitySchema);

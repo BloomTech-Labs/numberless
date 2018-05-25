@@ -10,7 +10,7 @@ import axios from 'axios';
 
 import './stripecheckout.css'
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3030';
 
 const successPayment = data => {
   alert('Payment Successful');
