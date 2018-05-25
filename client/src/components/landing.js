@@ -20,11 +20,13 @@ class Landing extends Component {
 			<div className="center">
 				<div className="Header">
 					<img className="Logo_imageUrl" src="" placeholder="Logo Image"/>
-					<input 
-						className="button"
-						value="LOG IN"
-						type="submit"
-					/>
+					<Link to="/login">
+						<input 
+							className="button"
+							value="LOG IN"
+							type="submit"
+						/>
+					</Link>
 				</div>
 				<h1>Take the Pledge</h1>
 				<p>
