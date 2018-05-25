@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StripeProvider } from 'react-stripe-elements';
 
-import App from './App';
 import Pledge from './components/pledge';
 import Landing from './components/landing';
 import ThankYou from './components/thankyou';
