@@ -9,6 +9,19 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  userPledge: {
+    type: Number,
+    required: true,
+  },
+  customerID: {
+    type: String,
+  },
+  subscriptionID: {
+    type: String,
+  },
+  voted: {
+    type: Boolean,
   }
 });
 

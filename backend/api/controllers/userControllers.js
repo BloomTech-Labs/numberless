@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 const User = require('../models/UserModel');
 
@@ -23,9 +24,33 @@ const userLogin = (req, res) => {
   res.json(req.loggedInUser);
 }
 
+const createStripeCustomer = (req, res) => {
+  const customer = stripe.customers.create({
+    description: req.body.description,
+    source: req.body.source,
+    email: req.body.email,
+  });
+  customer
+    .then(createdCustomer => res.json(createdCustomer))
+    .catch(err => res.status(500).json(err))
+}
+
+const createStripeSubscription = (req, res) => {
+  console.log(req.body);
+  const subscription = stripe.subscriptions.create({
+    customer: req.body.customer,
+    items: req.body.items,
+  })
+  subscription
+    .then(createdSubscription => res.json(createdSubscription))
+    .catch(err => res.status(500).json(err))
+}
+
 
 
 module.exports = {
   createUser,
-  userLogin
+  userLogin,
+  createStripeCustomer,
+  createStripeSubscription
 }
