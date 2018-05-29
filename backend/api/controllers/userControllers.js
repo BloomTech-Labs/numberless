@@ -8,12 +8,25 @@ const STATUS_SERVER_ERROR = 500;
 
 const createUser = (req, res) => {
   const password = req.password;
-  const { email } = req.body;
+  const { 
+    email,
+    userPledge,
+    customerID,
+    subscriptionID,
+    voted
+    } = req.body;
   if (!email) {
     res.status(STATUS_USER_ERROR).json({ error: 'Must provide email'});
     return;
   }
-  const newUser = new User({ email, password });
+  const newUser = new User({ 
+    email, 
+    password,
+    userPledge,
+    customerID,
+    subscriptionID,
+    voted
+   });
   newUser
     .save()
     .then(createdUser => res.json(createdUser))
@@ -36,7 +49,6 @@ const createStripeCustomer = (req, res) => {
 }
 
 const createStripeSubscription = (req, res) => {
-  console.log(req.body);
   const subscription = stripe.subscriptions.create({
     customer: req.body.customer,
     items: req.body.items,

@@ -30,6 +30,7 @@ class _StripeForm extends Component {
       userPledge: null,
       customerID: null,
       subscriptionID: null,
+      voted: false,
     }
   }
 
@@ -96,8 +97,29 @@ class _StripeForm extends Component {
       })
   }
 
+  // the following code creates a new user in the numberless database
+
   createUser = () => {
-    console.log(this.state);
+    const {
+      email,
+      password,
+      customerID,
+      userPledge,
+      subscriptionID,
+      voted
+    } = this.state;
+    axios.post(`${SERVER_URL}/create-user`,
+    {
+      email: email,
+      password: password,
+      customerID: customerID,
+      userPledge: userPledge,
+      subscriptionID: subscriptionID,
+      voted: voted
+    })
+    .then(createdUser => {
+      console.log(createdUser);
+    })
   }
 
   render() {
