@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import {
   CardElement,
-  CardNumberElement,
-  CardExpiryElement,
-  CardCVCElement,
-  PostalCodeElement,
   injectStripe,
 } from 'react-stripe-elements';
 import axios from 'axios';
@@ -12,10 +8,6 @@ import axios from 'axios';
 import './stripeform.css'
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3030';
-
-const successPayment = data => {
-  alert('Payment Successful');
-};
 
 const errorPayment = data => {
   alert('Payment Error');
