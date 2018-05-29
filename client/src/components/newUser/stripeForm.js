@@ -97,7 +97,8 @@ class _StripeForm extends Component {
       })
   }
 
-  // the following code creates a new user in the numberless database
+  // the following code creates a new user in the numberless database, then upon creation moves the user to the 
+  // voting page, setting sessionStorage and a cookie
 
   createUser = () => {
     const {
@@ -118,7 +119,10 @@ class _StripeForm extends Component {
       voted: voted
     })
     .then(createdUser => {
-      console.log(createdUser);
+      if (createdUser.data._id) {
+        sessionStorage.setItem('user', createdUser.data._id);
+        sessionStorage.setItem('loggedIn', 'true');
+      }
     })
   }
 

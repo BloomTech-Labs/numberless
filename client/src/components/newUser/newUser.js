@@ -31,7 +31,7 @@ class NewUser extends Component {
   }
 
   render() {
-    console.log(this.state.userPledge);
+    console.log(StripeForm.state);
     const {elementFontSize} = this.state;
     return (
       <div className="Checkout">
