@@ -3,6 +3,7 @@ import {
   CardElement,
   injectStripe,
 } from 'react-stripe-elements';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './stripeform.css'
@@ -133,7 +134,10 @@ class _StripeForm extends Component {
           Subscription Info
           <CardElement className='stripeInput'/>
         </label>
-        <button>Done</button>
+        <button>
+          Done
+          <Link to='' />
+        </button>
       </form>
     );
   }

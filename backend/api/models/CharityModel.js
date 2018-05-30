@@ -7,7 +7,7 @@ const CharitySchema = new mongoose.Schema({
     unique: true,
   },
   image: {
-    type: String, // string to URL?
+    type: String, 
     required: true,
   },
   description: {
