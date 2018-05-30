@@ -24,6 +24,8 @@
 
 * **Landing** - "/" or "/landing" - *IN DEVELOPMENT* - When a user hits the landing page, they are given the option to Learn More, Donate, or Log In. 
 
+* **Login** - "/login" - *IN DVELOPMENT* - Accepts the user's email address and password and checks against the hashed password stored on the database before passing the user to the voting page.
+
 * **Info** - "/info" - *IN DEVELOPMENT* - The info page uses a series a slides to step a new user through the idea behind Numberless, as well as it's basic usage. Once the user has looked over the info, they are brought to the Donate page.
 
 * **Donate** - "/pledge" - *IN DEVELOPMENT* - The donate page lets a new user select the amount they would like to contribute on a monthly basis, and they are then sent to the user creation page, with their selected donation passed to the user creator.
@@ -37,4 +39,90 @@
 ## Admin Components
 
 ### Coming Soon...
+
+# **Backend**
+
+### http://numberlessbackend.herokuapp.com
+
+## Schemas
+
+### User Schema
+
+```
+email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  userPledge: {
+    type: Number,
+    required: true,
+  },
+  customerID: {
+    type: String,
+  },
+  subscriptionID: {
+    type: String,
+  },
+  voted: {
+    type: Boolean,
+  }
+  ```
+
+  ### Charity Schema
+
+  ```
+  charity: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  image: {
+    type: String, 
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  winner: {
+    type: Boolean,
+  },
+  active: {
+    type: Boolean,
+  },
+  votes: {
+    type: Number,
+  }
+  ```
+
+## Routes
+
+* **/create-user** - POST - Takes in a new user with `email`, `password`, `userPledge`, `customerID`, `subscriptionID` and `voted` in the request body. Passes the password to the `hashPassword` middleware and adds that user to the database, and returns the created user.
+
+* **/create-stripe-customer** - POST - Takes in a `description`, `source` and `email` provided in the request body, which is then passed to Stripe. Returns the created Stripe customer.
+
+* **/create-stripe-subscription** - POST - Takes in a `customer`, the Stripe customer ID, and an `items` array, which contains the Stripe plan ID the customer is subscribing to. Returns the created Stripe subscription object.
+
+* **/login** - POST - Takes in a `email` and `password` from the request body and passes them through the `authenticate` middleware. If the user is verified, returns that user.
+
+* **/users/:id** - PUT - Takes in an `id` in the params, and updates that user's `voted` value to `true`. Nothing is expected in the body.
+
+* **/create-charity** - POST - Takes in a new charity with `charity`, `image` and `description` in the request body. Creates a charity with the `winner` value set to `false`, the `active` value set to `false`, and the `votes` value set to `0` and adds that charity to the database.
+
+* **/charities** - GET - Returns an array of all charities in the database.
+
+* **/charities/:id** - PUT - Takes in an `id` from the params and a `vote` from the request body, which is the number of votes to be added to the, charity's `votes` value. Increments the votes accordingly. 
+
+## Middleware
+
+* **hashPassword** - Uses `bcrypt` to encrypt the user's password before it hits the database.
+
+* **authenticate** - Uses `bcrypt` to check the incoming password against the user's hashed password stored in the database.
+
+
 
