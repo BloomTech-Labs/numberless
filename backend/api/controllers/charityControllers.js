@@ -39,7 +39,24 @@ const getCharities = (req, res) => {
   })
 };
 
+const updateCharity = (req, res) => {
+  const { id } = req.params;
+  const { vote } = req.body;
+  Charity.findOneAndUpdate(
+    { "_id": id },
+    { $inc: { "votes": vote }}
+  )
+    .exec((err, charity) => {
+      if (err) {
+        res.status(STATUS_USER_ERROR).json({ "Could not find charity: ": err});
+        return;
+      }
+      res.json(charity);
+    })
+};
+
 module.exports = {
   createCharity,
-  getCharities
+  getCharities,
+  updateCharity
 }

@@ -33,6 +33,21 @@ const createUser = (req, res) => {
     .catch(err => res.status(STATUS_SERVER_ERROR).json(err))
 };
 
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  User.findOneAndUpdate(
+    { "_id": id },
+    { "voted": true }
+  )
+    .exec((err, user) => {
+      if (err) {
+        res.status(STATUS_USER_ERROR).json({ "Could not find user: ": err});
+        return;
+      }
+      res.json(user);
+    })
+};
+
 const userLogin = (req, res) => {
   res.json(req.loggedInUser);
 }
@@ -62,6 +77,7 @@ const createStripeSubscription = (req, res) => {
 
 module.exports = {
   createUser,
+  updateUser,
   userLogin,
   createStripeCustomer,
   createStripeSubscription
