@@ -19,6 +19,9 @@ const CharitySchema = new mongoose.Schema({
   },
   active: {
     type: Boolean,
+  },
+  votes: {
+    type: Number,
   }
 });
 
