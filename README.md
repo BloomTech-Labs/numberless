@@ -110,6 +110,8 @@ email: {
 
 * **/login** - POST - Takes in a `email` and `password` from the request body and passes them through the `authenticate` middleware. If the user is verified, returns that user.
 
+* **/users/:id** - GET - Takes in an `id` in the params, and returns the user object, including `id`, `email`, `userPledge`, `customerID`, `subscriptionID` and `voted`.
+
 * **/users/:id** - PUT - Takes in an `id` in the params, and updates that user's `voted` value to `true`. Nothing is expected in the body.
 
 * **/create-charity** - POST - Takes in a new charity with `charity`, `image` and `description` in the request body. Creates a charity with the `winner` value set to `false`, the `active` value set to `false`, and the `votes` value set to `0` and adds that charity to the database.

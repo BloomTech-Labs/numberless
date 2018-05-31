@@ -38,13 +38,16 @@ class _StripeForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     this.props.stripe.createToken().then(payload => {
-      this.onToken(payload.token)
+      if (payload.token) {
+        this.onToken(payload.token);
+      }
     });
   };
 
   // the following code creates a new customer in the stripe database and updates the state with the returned data
 
   onToken = (token) => {
+    console.log(token);
     axios.post(`${SERVER_URL}/create-stripe-customer`,
       {
         description: 'numberlesssetup',
@@ -115,6 +118,7 @@ class _StripeForm extends Component {
       if (createdUser.data._id) {
         sessionStorage.setItem('user', createdUser.data._id);
         sessionStorage.setItem('loggedIn', 'true');
+        this.props.history.push('voting');
       }
     })
   }
@@ -135,8 +139,7 @@ class _StripeForm extends Component {
           <CardElement className='stripeInput'/>
         </label>
         <button>
-          Done
-          <Link to='' />
+          Submit
         </button>
       </form>
     );

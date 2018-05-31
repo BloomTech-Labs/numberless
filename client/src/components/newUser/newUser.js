@@ -9,19 +9,8 @@ class NewUser extends Component {
   constructor() {
     super();
     this.state = {
-      elementFontSize: window.innerWidth < 450 ? '14px' : '18px',
-      userPledge: null,
+      userPledge: null
     };
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 450 && this.state.elementFontSize !== '14px') {
-        this.setState({elementFontSize: '14px'});
-      } else if (
-        window.innerWidth >= 450 &&
-        this.state.elementFontSize !== '18px'
-      ) {
-        this.setState({elementFontSize: '18px'});
-      }
-    });
   }
 
   componentWillMount(){
@@ -31,12 +20,10 @@ class NewUser extends Component {
   }
 
   render() {
-    console.log(StripeForm.state);
-    const {elementFontSize} = this.state;
     return (
       <div className="Checkout">
         <Elements>
-          <StripeForm fontSize={elementFontSize} userPledge={this.state.userPledge} />
+          <StripeForm userPledge={this.state.userPledge} history={this.props.history} />
         </Elements>
       </div>
     );
