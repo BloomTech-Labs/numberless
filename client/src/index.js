@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StripeProvider } from 'react-stripe-elements';
 
-import Pledge from './components/pledge';
 import Landing from './components/landing';
 import ThankYou from './components/thankyou';
 import Voting from './components/voting';
-import { Login, NewUser } from './components';
+import { Login, NewUser, Pledge } from './components';
 
 import registerServiceWorker from './registerServiceWorker';
 

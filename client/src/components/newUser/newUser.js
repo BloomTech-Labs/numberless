@@ -14,6 +14,7 @@ class NewUser extends Component {
   }
 
   componentWillMount(){
+    console.log(this.props.location.state.userPledge);
     if (this.props.userPledge) {
       this.setState(() => ({ userPledge: this.props.userPledge }));
     } else this.setState(() => ({ userPledge: 50 }));

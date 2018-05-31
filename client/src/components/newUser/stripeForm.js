@@ -3,7 +3,6 @@ import {
   CardElement,
   injectStripe,
 } from 'react-stripe-elements';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './stripeform.css'
