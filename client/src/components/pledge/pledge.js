@@ -9,6 +9,12 @@ class Pledge extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
+	componentWillMount(){
+		if (sessionStorage.getItem('loggedIn')) {
+			this.props.history.push('voting');
+		}
+	}
+
 	linkStyle = { textDecoration: 'none', color: '#234980', fontFamily: 'Open Sans',fontSize: '40pt', fontWeight: 700 }
 
 	render() {
@@ -19,17 +25,17 @@ class Pledge extends Component {
 					<div className="pledgeBox">
 						<div className="pledgeButton">
 							<Link style = { this.linkStyle } to={{ pathname: '/newuser', state: { userPledge: 10 }}}>
-								<span class="dollar">10</span>
+								<span className="dollar">10</span>
 							</Link>
 						</div>
 						<div className="pledgeButton">
 							<Link style = { this.linkStyle } to={{ pathname: '/newuser', state: { userPledge: 25 }}}>
-								<span class="dollar">25</span>
+								<span className="dollar">25</span>
 							</Link>
 						</div>
 						<div className="pledgeButton">
 							<Link style = { this.linkStyle } to={{ pathname: '/newuser', state: { userPledge: 50 }}}>
-								<span class="dollar">50</span>
+								<span className="dollar">50</span>
 							</Link>
 						</div>
 					</div>

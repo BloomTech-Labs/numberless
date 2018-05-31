@@ -14,7 +14,9 @@ class NewUser extends Component {
   }
 
   componentWillMount(){
-    console.log(this.props.location.state.userPledge);
+    if (sessionStorage.getItem('loggedIn')) {
+      this.props.history.push('voting');
+    }
     if (this.props.userPledge) {
       this.setState(() => ({ userPledge: this.props.userPledge }));
     } else this.setState(() => ({ userPledge: 50 }));

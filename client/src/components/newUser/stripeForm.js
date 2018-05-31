@@ -46,7 +46,6 @@ class _StripeForm extends Component {
   // the following code creates a new customer in the stripe database and updates the state with the returned data
 
   onToken = (token) => {
-    console.log(token);
     axios.post(`${SERVER_URL}/create-stripe-customer`,
       {
         description: 'numberlesssetup',

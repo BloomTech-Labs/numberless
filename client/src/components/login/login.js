@@ -16,9 +16,9 @@ class Login extends Component {
     const activeUser = axios.post(`${SERVER_URL}/login/`, user);
     activeUser
       .then(returnedUser => {
-        if (returnedUser.data.email) {
+        if (returnedUser.data._id) {
           sessionStorage.setItem('loggedIn', 'true')
-          sessionStorage.setItem('userEmail', `${returnedUser.data.email}`);
+          sessionStorage.setItem('user', `${returnedUser.data._id}`);
           this.props.history.push('voting')
         }
       })
