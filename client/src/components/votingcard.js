@@ -18,27 +18,34 @@ import './styles/votingcard.css';
 // i'm using the below reactjs library "popup" to generate a popup window once the user clicks on the DETAILS button
 import Popup from 'reactjs-popup';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const handleChange = (event) => {
+class VotingCard extends Component {
+  state = { data: [],activeUser:[] }
+  
 
+
+ handleChange = (event) => {
+  //const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 	// the select button will increment the tally counter for the appropriate charity
 	// the amount the tally counter will be incremented by depends on the user's subscription rate
-	// for now, the select as winner page will just be a route to the thank you page
+  // for now, the select as winner page will just be a route to the thank you page
+
+  
 }
-
-
-const VotingCard = (props) => {
-	return (
-		<div className="VotingCard">
-			{props.charity.map((c => {
+  render() {
+    return (
+      <div className="VotingCard">
+      {/*places each charity in it's own voting card  */}
+			{this.props.charity.map((c => {
 				console.log(c);
 				return (
 					<div className="VotingCard">
 						<div className="VotingCard_image">
 							<img src={c.img} width="400" height="100"/>
 						</div>
-						<div className="VotingCard_header">
-							<h4>{c.name}</h4>
+						<div >
+							<h4  className="VotingCard_Header">{c.name}</h4>
 						</div>
 						<Popup 
 							trigger={<button>DETAILS</button>} 
@@ -66,7 +73,8 @@ const VotingCard = (props) => {
 				)
 			}))}
 		</div>
-	)
+    );
+  }
 }
 
 export default VotingCard;

@@ -1,6 +1,7 @@
+/* tHe image becomes little more responsive */
 .VotingCard_image {
-	width: 400px;
-	height: 100px;
+  max-width: 100%;
+	height: auto;
 }
 
 .VotingCard {
@@ -13,4 +14,9 @@
 	margin-top: auto;
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 8px lightgray;
+}
+.VotingCard_Header {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: 800;
+  text-align: center;
 }
