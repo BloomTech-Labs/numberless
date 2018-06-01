@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:b');
-/** {
+* {
   box-sizing: border-box;
 }
 
@@ -85,18 +84,4 @@ button:hover {
 
 .StripeElement.PaymentRequestButton {
   padding: 0;
-}*/
-
-.checkout{
-  font-family: 'Open Sans', sans-serif;
-  background-color: #234980;
-  position: absolute;
-  color: white;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  font-size: 3rem;
 }
