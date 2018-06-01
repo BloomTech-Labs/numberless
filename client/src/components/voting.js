@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './voting.css';
+import './styles/voting.css';
 import VotingCard from './votingcard.js'
 import { dummyData } from '../dummydata.js';
 // you will have to insert a voting-card component
