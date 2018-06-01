@@ -11,14 +11,14 @@ class ThankYou extends Component {
 
 	render() {
 		return (
-			<div className="center">
-				<img className="ThankYou" src="" placeholder="Thanks"/>
-				<h1>Thank You!</h1>
-				<h3>YOUR VOTE HAS BEEN CAST</h3>
-				<p>This months donation has been allocated to <p>[ insert name of selected charity here. ]</p></p>
+			<div className="thankyou">
+				<img src={require('./static/thankyou.jpg')} height="150" width="150" placeholder="Thanks"/>
+				<p className="title">Thank You!</p>
+				<p>YOUR VOTE HAS BEEN CAST</p>
+				<p>This months donation has been allocated to Operation Underground Railroad.</p>
 				<Link to="/landing">
 					<input 
-						className="button"
+						className="thankyou-button"
 						value="RETURN HOME"
 						type="submit"
 					/>

@@ -39,6 +39,11 @@ class Voting extends Component {
 
 	render() {
 		return (
+<<<<<<< HEAD
+			<div className="voting">
+				<p className="title">VOTE <br></br><a className="subtitle">FOR THIS MONTHS CHARITY</a></p>
+				<VotingCard charity={this.state.data}/>
+=======
       <div className="voting">
       <header >  
 				<h1 className="votingHeading">VOTE</h1>
@@ -47,6 +52,7 @@ class Voting extends Component {
         <div>
           <VotingCard charity={this.state.data} />
         </div>  
+>>>>>>> 0b61ff71c9b961c05b24ebd8aaca59b4a38cf735
 			</div>
 		)
 	}
