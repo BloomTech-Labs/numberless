@@ -24,7 +24,8 @@ class NewUser extends Component {
 
   render() {
     return (
-      <div className="Checkout">
+      <div className="container">
+        <img className="logo" src={require('../../static/logo.png')} alt="Numberless" />
         <Elements>
           <StripeForm userPledge={this.state.userPledge} history={this.props.history} />
         </Elements>
