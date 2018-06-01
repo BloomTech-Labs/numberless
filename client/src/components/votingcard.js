@@ -13,6 +13,7 @@
 	// extended info about charity
 	// close button - return to voting page
 	// select as winner button - again, need to keep track of charity votes somehow
+
   import React, { Component } from 'react';
   import './styles/votingcard.css';
   // i'm using the below reactjs library "popup" to generate a popup window once the user clicks on the DETAILS button
