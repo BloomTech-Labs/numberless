@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+=======
+/* tHe image becomes little more responsive */
+.VotingCard_image {
+  max-width: 100%;
+	height: auto;
+}
+
+.VotingCard {
+	border: .1px solid lightgray;
+	height: 200;
+	width: 400px;
+	font-size: 12.5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: 40px;
+	box-shadow: 1px 1px 8px lightgray;
+}
+.VotingCard_Header {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: 800;
+  text-align: center;
+}
+>>>>>>> 0b61ff71c9b961c05b24ebd8aaca59b4a38cf735

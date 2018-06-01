@@ -22,12 +22,15 @@ class Voting extends Component {
 	constructor() {
 		super();
 		this.state = {
-			data: []
+      data: [],
+      pledge: 15
 		}
 	}
 
 	componentDidMount() {
-		this.setState({
+    this.setState({
+      // use axios to set the data.
+      // will pledge and user be passed by prompt
 			data: dummyData
 		})
 		// will set the state so that data comes from charity database
@@ -36,9 +39,20 @@ class Voting extends Component {
 
 	render() {
 		return (
+<<<<<<< HEAD
 			<div className="voting">
 				<p className="title">VOTE <br></br><a className="subtitle">FOR THIS MONTHS CHARITY</a></p>
 				<VotingCard charity={this.state.data}/>
+=======
+      <div className="voting">
+      <header >  
+				<h1 className="votingHeading">VOTE</h1>
+        <h3 className="votingHeading">FOR THIS MONTHS CHARITY</h3>
+        </header>  
+        <div>
+          <VotingCard charity={this.state.data} />
+        </div>  
+>>>>>>> 0b61ff71c9b961c05b24ebd8aaca59b4a38cf735
 			</div>
 		)
 	}

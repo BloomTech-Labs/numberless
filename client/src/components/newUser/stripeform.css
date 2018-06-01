@@ -27,11 +27,6 @@ button {
   margin-top: 10px;
 }
 
-form {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 3px solid #e6ebf1;
-}
 
 button:hover {
   /*color: #fff;*/
@@ -43,6 +38,7 @@ button:hover {
 .stripeInput {
   display: block;
   margin: 10px 0 20px 0;
+  width: 80%;
   max-width: 500px;
   padding: 10px 14px;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
@@ -56,17 +52,20 @@ button:hover {
   transition: all 150ms ease;
 }
 
-
-/* .StripeElement {
-  display: block;
-  margin: 10px 0 20px 0;
+.formBox {
+  background-color: #FFFFFF;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
   max-width: 500px;
-  padding: 10px 14px;
-  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
-  border-radius: 4px;
-  background: white;
+  border: .1px solid #E8E8E8;
+  margin-bottom: 100px;
 }
 
+<<<<<<< HEAD
 .StripeElement--focus {
   box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
   -webkit-transition: all 150ms ease;
@@ -79,4 +78,9 @@ button:hover {
 
 .white{
   color: white;
+=======
+.formBody {
+  height: 100%;
+  width: 80%;
+>>>>>>> 0b61ff71c9b961c05b24ebd8aaca59b4a38cf735
 }
