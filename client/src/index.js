@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY;
 
 ReactDOM.render(
-	<StripeProvider apiKey={ STRIPE_KEY }>
+	<StripeProvider apiKey={ STRIPE_KEY || 'null' }>
 		<Router>
 			<div>
 				<Route exact path="/pledge" component={Pledge}/>
@@ -29,6 +29,7 @@ ReactDOM.render(
 				<Route exact path="/voting" component={Voting}/>
 				<Route exact path="/newuser" component={NewUser}/>
 				<Route exact path="/login" component={Login}/>
+				<Route exact path="/info" component={Info} />
 			</div>
 		</Router>
 	</StripeProvider>, 

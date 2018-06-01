@@ -64,9 +64,7 @@
         })
         .catch(() => {
           console.error('error getting data');
-        });
-      
-  
+        });  
     }
   
    handleChange = (event) => {
