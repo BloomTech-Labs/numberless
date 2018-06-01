@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './voting.css';
+import './styles/voting.css';
 import VotingCard from './votingcard.js'
 import { dummyData } from '../dummydata.js';
 // you will have to insert a voting-card component
@@ -22,12 +22,15 @@ class Voting extends Component {
 	constructor() {
 		super();
 		this.state = {
-			data: []
+      data: [],
+      pledge: 15
 		}
 	}
 
 	componentDidMount() {
-		this.setState({
+    this.setState({
+      // use axios to set the data.
+      // will pledge and user be passed by prompt
 			data: dummyData
 		})
 		// will set the state so that data comes from charity database
@@ -36,10 +39,14 @@ class Voting extends Component {
 
 	render() {
 		return (
-			<div className="center">
-				<h1>VOTE</h1>
-				<h3>FOR THIS MONTHS CHARITY</h3>
-				<VotingCard charity={this.state.data}/>
+      <div className="voting">
+      <header >  
+				<h1 className="votingHeading">VOTE</h1>
+        <h3 className="votingHeading">FOR THIS MONTHS CHARITY</h3>
+        </header>  
+        <div>
+          <VotingCard charity={this.state.data} />
+        </div>  
 			</div>
 		)
 	}
