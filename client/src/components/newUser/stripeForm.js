@@ -123,23 +123,25 @@ class _StripeForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Email
-          <input className="stripeInput" id="email" />
-        </label>
-        <label>
-          Password
-          <input className="stripeInput" id="pass" />
-        </label>
-        <label>
-          Subscription Info
-          <CardElement className='stripeInput'/>
-        </label>
-        <button>
-          Submit
-        </button>
-      </form>
+      <div className="formBox">
+        <form className="formBody" onSubmit={this.handleSubmit}>
+          <label>
+            Email
+            <input className="stripeInput" id="email" />
+          </label>
+          <label>
+            Password
+            <input className="stripeInput" id="pass" />
+          </label>
+          <label>
+            Subscription Info
+            <CardElement className='stripeInput'/>
+          </label>
+          <button>
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }
