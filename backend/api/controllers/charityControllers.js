@@ -6,7 +6,6 @@ const STATUS_USER_ERROR = 422;
 const STATUS_SERVER_ERROR = 500;
 
 const createCharity = (req, res) => {
-  console.log(req.body);
   const { 
     charity,
     image,

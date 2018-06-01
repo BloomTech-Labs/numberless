@@ -37,7 +37,9 @@ class _StripeForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     this.props.stripe.createToken().then(payload => {
-      this.onToken(payload.token)
+      if (payload.token) {
+        this.onToken(payload.token);
+      }
     });
   };
 
@@ -114,6 +116,7 @@ class _StripeForm extends Component {
       if (createdUser.data._id) {
         sessionStorage.setItem('user', createdUser.data._id);
         sessionStorage.setItem('loggedIn', 'true');
+        this.props.history.push('voting');
       }
     })
   }
@@ -133,7 +136,9 @@ class _StripeForm extends Component {
           Subscription Info
           <CardElement className='stripeInput'/>
         </label>
-        <button>Done</button>
+        <button>
+          Submit
+        </button>
       </form>
     );
   }

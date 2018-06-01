@@ -6,9 +6,13 @@ import { StripeProvider } from 'react-stripe-elements';
 import Landing from './components/landing';
 import ThankYou from './components/thankyou';
 import Voting from './components/voting';
+<<<<<<< HEAD
+import { Login, NewUser, Pledge } from './components';
+=======
 import Info from './components/info';
 
 import { Login, NewUser } from './components';
+>>>>>>> master
 
 import registerServiceWorker from './registerServiceWorker';
 
