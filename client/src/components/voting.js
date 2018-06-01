@@ -36,9 +36,8 @@ class Voting extends Component {
 
 	render() {
 		return (
-			<div className="center">
-				<h1>VOTE</h1>
-				<h3>FOR THIS MONTHS CHARITY</h3>
+			<div className="voting">
+				<p className="title">VOTE <br></br><a className="subtitle">FOR THIS MONTHS CHARITY</a></p>
 				<VotingCard charity={this.state.data}/>
 			</div>
 		)

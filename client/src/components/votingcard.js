@@ -31,32 +31,44 @@ const VotingCard = (props) => {
 	return (
 		<div className="VotingCard">
 			{props.charity.map((c => {
-				console.log(c);
 				return (
 					<div className="VotingCard">
 						<div className="VotingCard_image">
 							<img src={c.img} width="400" height="100"/>
 						</div>
 						<div className="VotingCard_header">
-							<h4>{c.name}</h4>
+							<p>{c.name}</p>
 						</div>
 						<Popup 
-							trigger={<button>DETAILS</button>} 
+							trigger={<input className="voting-button" value="DETAILS" type="submit"/>} 
 							position="right center">
 								{close => (
-									<div>
-										<h2>{c.name}</h2>
+									<div className="card">
+										<p>{c.name}</p>
 										<p>{c.info}</p>
-										<button onClick={close}>CLOSE</button>
+										<input 
+											className="voting-button" 
+											type="submit"
+											value="CLOSE"
+											onClick={close}
+										/>
+										<div className="divider"></div>
 										<Link to="/thankyou">
-											<button onClick={this.handleChange}>SELECT AS WINNER</button>
+											<input 
+												className="voting-button" 
+												type="submit"
+												value="SELECT AS WINNER"
+												onClick={this.handleChange}
+											/>
 										</Link>
 									</div>
 								)}
 								
 						</Popup>
+						<div className="divider"></div>
 						<Link to="/thankyou">
 							<input
+								className="voting-button"
 								type="submit"
 								value="SELECT"
 								onClick={this.handleChange}

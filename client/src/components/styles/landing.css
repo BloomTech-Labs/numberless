@@ -1,27 +1,68 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:l');
 
-.center{
-	font-family: 'Raleway', sans-serif;
-	background-color: #1abc9c;
+.landing{
+	font-family: 'Open Sans', sans-serif;
+	background-color: #F3F3F3;
 	position: absolute;
 	height: 100%;
 	width: 100%;
+	color: #666666;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-size: .75rem;
+	margin: auto;
+}
+
+.header{
+	background-color: #E8E8E8;
+	width: 100%;
+	margin-top: .75rem;
+	padding: .75rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-button{
+	border: none;
+	background-color: #E8E8E8;
+	font-family: 'Open Sans', sans-serif;
+	color: #666666;
+	font-size: 1rem;
+}
+
+.horizontal{
+	display: flex;
 	align-items: center;
 }
 
-.button{
-	font-family: 'Raleway', sans-serif;
-	height: 35px;
-	color: #fff;
-	background-color: #1abc9c;
-	border: none;
-	letter-spacing: 0.2rem;
-	transition: 0.3s opacity ease;
-	cursor: pointer;
+.title{
+	font-size: 2rem;
 }
 
-.button:hover{
+.divider{
+    width: .5rem;
+    height:auto;
+    display:inline-block;
+}
+
+.landing-button{
+	font-family: 'Open Sans', sans-serif;
+	height: 35px;
+	background-color: #F3F3F3;
+	border: .001rem solid #666666;
+	color: #666666;
+	width: 10rem;
+	transition: 0.3s opacity ease;
+	cursor: pointer;
+	font-size: .75rem;
+}
+
+.landing-button:hover{
 	opacity: 0.6;
+	background-color: white;
+}
+
+.light-grey{
+	color: #999999;
 }

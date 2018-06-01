@@ -9,23 +9,23 @@ class Pledge extends Component {
 
 	render() {
 		return (
-			<div className="center">
-				<div className="card">
+			<div className="pledge">
+				<div className="pledge">
 					<p>PLEDGE</p>
 					<input
-						className="button"
+						className="pledge-button"
 						value="$10"
 						type="submit"
 						onClick={this.handleChange}
 					/>
 					<input
-						className="button"
+						className="pledge-button"
 						value="$25"
 						type="submit"
 						onClick={this.handleChange}
 					/>
 					<input
-						className="button"
+						className="pledge-button"
 						value="$50"
 						type="submit"
 						onClick={this.handleChange}

@@ -24,7 +24,7 @@ class NewUser extends Component {
 
   render() {
     return (
-      <div className="Checkout">
+      <div className="checkout">
         <Elements>
           <StripeForm userPledge={this.state.userPledge} history={this.props.history} />
         </Elements>
