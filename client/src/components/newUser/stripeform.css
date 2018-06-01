@@ -65,22 +65,7 @@ button:hover {
   margin-bottom: 100px;
 }
 
-<<<<<<< HEAD
-.StripeElement--focus {
-  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
-  -webkit-transition: all 150ms ease;
-  transition: all 150ms ease;
-} */
-
-.StripeElement.PaymentRequestButton {
-  padding: 0;
-}
-
-.white{
-  color: white;
-=======
 .formBody {
   height: 100%;
   width: 80%;
->>>>>>> 0b61ff71c9b961c05b24ebd8aaca59b4a38cf735
 }

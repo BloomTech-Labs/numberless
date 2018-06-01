@@ -27,7 +27,7 @@ class Login extends Component {
   render() {
     return (
       <div className="container">
-        <img className="logo" src={require('../../static/logo.png')} alt="Numberless" />
+        <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
         <div className="formBox">
           <Form>
             <FormGroup>
