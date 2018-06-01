@@ -26,21 +26,23 @@ class Login extends Component {
 
   render() {
     return (
-      <Form>
+      <Form className="login">
         <FormGroup>
-          <Label for="exampleEmail">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="with a placeholder" />
+          <Label className="white" for="exampleEmail">Email</Label>
+          <div className="divider"></div>
+          <Input type="email" name="email" id="email" placeholder="email" />
         </FormGroup>
         <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="password" placeholder="password placeholder" />
+          <Label className="white" for="examplePassword">Password</Label>
+          <div className="divider"></div>
+          <Input type="password" name="password" id="password" placeholder="password" />
         </FormGroup>
-        <Button onClick={ () => {
+        <Button className="button" onClick={ () => {
           let email = document.getElementById('email').value;
           let pass = document.getElementById('password').value;
           this.verifyUser(email, pass); 
         }}>Sign In</Button>
-        <Button onClick={ () => {
+        <Button className="button" onClick={ () => {
           this.props.history.push('newuser');
         }}>Sign Up</Button>
       </Form>

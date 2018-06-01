@@ -28,7 +28,7 @@ class NewUser extends Component {
   render() {
     const {elementFontSize} = this.state;
     return (
-      <div className="Checkout">
+      <div className="checkout">
         <Elements>
           <StripeCheckout fontSize={elementFontSize} />
         </Elements>

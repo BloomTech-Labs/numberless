@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.button{
+	background-color: white;
+	color: #234980;
+	border-radius: 0px;
+}
+
+.login{
+	font-family: 'Open Sans', sans-serif;
+	background-color: #234980;
+	position: absolute;
+	color: white;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	font-size: 3rem;
+}
+
+.white{
+	color: white;
+}
+
+.button:hover{
+	opacity: 0.6;
+}
+
+.divider{
+    width: .5rem;
+    height:auto;
+    display:inline-block;
+}

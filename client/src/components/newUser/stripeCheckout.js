@@ -41,19 +41,19 @@ class _StripeCheckout extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label className="white">
           Card number
           <CardNumberElement/>
         </label>
-        <label>
+        <label className="white">
           Expiration date
           <CardExpiryElement/>
         </label>
-        <label>
+        <label className="white">
           CVC
           <CardCVCElement/>
         </label>
-        <label>
+        <label className="white">
           Postal code
           <PostalCodeElement/>
         </label>
