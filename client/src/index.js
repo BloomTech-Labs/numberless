@@ -8,7 +8,7 @@ import ThankYou from './components/thankyou';
 import Voting from './components/voting';
 import Info from './components/info';
 
-import { Login, NewUser, Pledge } from './components';
+import { Login, NewUser, Pledge, Admin } from './components';
 
 import registerServiceWorker from './registerServiceWorker';
 

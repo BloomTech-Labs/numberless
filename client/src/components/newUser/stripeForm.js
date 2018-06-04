@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {
   CardElement,
   injectStripe,
@@ -29,6 +30,7 @@ class _StripeForm extends Component {
   // the following function sets the user's pledge amount to the incoming prop from the pledge component
 
   componentDidMount(newProps){
+    console.log(this.props);
     this.setState(() => ({ userPledge: this.props.userPledge }));
   }
 
@@ -36,6 +38,7 @@ class _StripeForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
+    console.log('handlesubmit fired');
     this.props.stripe.createToken().then(payload => {
       if (payload.token) {
         this.onToken(payload.token);
@@ -46,6 +49,7 @@ class _StripeForm extends Component {
   // the following code creates a new customer in the stripe database and updates the state with the returned data
 
   onToken = (token) => {
+    console.log('ontoken fired')
     axios.post(`${SERVER_URL}/create-stripe-customer`,
       {
         description: 'numberlesssetup',
@@ -68,11 +72,13 @@ class _StripeForm extends Component {
   addSubscription = () => {
     let product = null;
     if (this.state.userPledge === 50) {
-      product = process.env.STRIPE_PLAN_50 || 'plan_Cwq75ozX5poOY2';
-    } else if (this.state.userPledge === 25) {
-      product = process.env.STRIPE_PLAN_25;
-    } else {
-      product = process.env.STRIPE_PLAN_10;
+      product = process.env.REACT_APP_STRIPE_PLAN_50;
+    } 
+    if (this.state.userPledge === 25) {
+      product = process.env.REACT_APP_STRIPE_PLAN_25;
+    } 
+    else {
+      product = process.env.REACT_APP_STRIPE_PLAN_10;
     }
     axios.post(`${SERVER_URL}/create-stripe-subscription`,
       {
@@ -124,23 +130,18 @@ class _StripeForm extends Component {
   render() {
     return (
       <div className="formBox">
-        <form className="formBody" onSubmit={this.handleSubmit}>
-          <label>
-            Email
-            <input className="stripeInput" id="email" />
-          </label>
-          <label>
-            Password
-            <input className="stripeInput" id="pass" />
-          </label>
-          <label>
-            Subscription Info
+        <Form>
+            <FormGroup>
+              <Input className="input" type="email" name="email" id="email" placeholder="Email"/>
+            </FormGroup>
+            <FormGroup>
+              <Input className="input" type="password" name="password" id="pass" placeholder="Password"/>
+            </FormGroup>
             <CardElement className='stripeInput'/>
-          </label>
-          <button>
+          <Button onClick={this.handleSubmit}>
             Submit
-          </button>
-        </form>
+          </Button>
+        </Form>
       </div>
     );
   }
