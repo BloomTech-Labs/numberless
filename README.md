@@ -24,7 +24,7 @@
 
 * **Landing** - "/" or "/landing" - *IN DEVELOPMENT* - When a user hits the landing page, they are given the option to Learn More, Donate, or Log In. 
 
-* **Login** - "/login" - *IN DVELOPMENT* - Accepts the user's email address and password and checks against the hashed password stored on the database before passing the user to the voting page.
+* **Login** - "/login" - Accepts the user's email address and password and checks against the hashed password stored on the database before passing the user to the voting page.
 
 * **Info** - "/info" - *IN DEVELOPMENT* - The info page uses a series a slides to step a new user through the idea behind Numberless, as well as it's basic usage. Once the user has looked over the info, they are brought to the Donate page.
 
@@ -38,7 +38,7 @@
 
 ## Admin Components
 
-### Coming Soon...
+* **Admin** * - "/admin" - *IN DEVELOPMENT* - The admin page is a protected route. At login, if a user has the `admin` flag set to true, they are redirected to the admin page, which displays a list of current admin users and a list of charities. The user can then add new admin users and charities to the database.
 
 # **Backend**
 
@@ -69,7 +69,10 @@ email: {
     type: String,
   },
   voted: {
-    type: Boolean,
+    type: String,
+  },
+  admin: {
+    type: Boolean
   }
   ```
 
@@ -112,7 +115,9 @@ email: {
 
 * **/users/:id** - GET - Takes in an `id` in the params, and returns the user object, including `id`, `email`, `userPledge`, `customerID`, `subscriptionID` and `voted`.
 
-* **/users/:id** - PUT - Takes in an `id` in the params, and updates that user's `voted` value to `true`. Nothing is expected in the body.
+* **/users/:id** - PUT - Takes in an `id` in the params and a `vote` in the body, which is the `id` of the charity the user voted for, and updates that user's `voted` value to the chosen charity's id. 
+
+* **/adminusers** - GET - Returns a list of all users with `admin` flagged to true.
 
 * **/create-charity** - POST - Takes in a new charity with `charity`, `image` and `description` in the request body. Creates a charity with the `winner` value set to `false`, the `active` value set to `false`, and the `votes` value set to `0` and adds that charity to the database.
 

@@ -17,10 +17,13 @@ class Login extends Component {
     activeUser
       .then(returnedUser => {
         if (returnedUser.data._id) {
-          console.log(returnedUser);
           sessionStorage.setItem('loggedIn', 'true')
           sessionStorage.setItem('user', `${returnedUser.data._id}`);
-          this.props.history.push('voting')
+          if (returnedUser.data.admin === true) {
+            this.props.history.push('admin');
+          } else {
+            this.props.history.push('voting')
+          }
         }
       })
   }

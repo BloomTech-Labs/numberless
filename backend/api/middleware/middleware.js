@@ -5,7 +5,7 @@ const STATUS_USER_ERROR = 422;
 const STATUS_SERVER_ERROR = 500;
 const BCRYPT_COST = 11;
 
-hashPassword = (req, res, next) => {
+const hashPassword = (req, res, next) => {
   const { password } = req.body;
   if (!password) {
     res.status(STATUS_USER_ERROR).json({ error: 'No password provided to hash'});

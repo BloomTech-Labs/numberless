@@ -23,14 +23,13 @@ class _StripeForm extends Component {
       userPledge: null,
       customerID: null,
       subscriptionID: null,
-      voted: false,
+      voted: null,
     }
   }
 
   // the following function sets the user's pledge amount to the incoming prop from the pledge component
 
   componentDidMount(newProps){
-    console.log(this.props);
     this.setState(() => ({ userPledge: this.props.userPledge }));
   }
 
@@ -38,7 +37,6 @@ class _StripeForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    console.log('handlesubmit fired');
     this.props.stripe.createToken().then(payload => {
       if (payload.token) {
         this.onToken(payload.token);
@@ -49,7 +47,6 @@ class _StripeForm extends Component {
   // the following code creates a new customer in the stripe database and updates the state with the returned data
 
   onToken = (token) => {
-    console.log('ontoken fired')
     axios.post(`${SERVER_URL}/create-stripe-customer`,
       {
         description: 'numberlesssetup',
@@ -77,9 +74,9 @@ class _StripeForm extends Component {
     if (this.state.userPledge === 25) {
       product = process.env.REACT_APP_STRIPE_PLAN_25;
     } 
-    else {
+    if (this.state.userPledge === 10) {
       product = process.env.REACT_APP_STRIPE_PLAN_10;
-    }
+    } 
     axios.post(`${SERVER_URL}/create-stripe-subscription`,
       {
         customer: this.state.customerID,
@@ -142,6 +139,9 @@ class _StripeForm extends Component {
             Submit
           </Button>
         </Form>
+        <a href="https://stripe.com/" target="_blank">
+          <img className="stripeLogo" src={require('../static/powered_by_stripe.png')} alt="Stripe" />
+        </a>
       </div>
     );
   }

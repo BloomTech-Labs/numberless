@@ -7,6 +7,7 @@ module.exports = (app) => {
     app.route('/create-user').post(middleware.hashPassword, userControllerMethods.createUser);
     app.route('/users/:id').get(userControllerMethods.getUser);
     app.route('/users/:id').put(userControllerMethods.updateUser);
+    app.route('/adminusers').get(userControllerMethods.getAdminUsers);
     app.route('/login').post(middleware.authenticate, userControllerMethods.userLogin);
     app.route('/create-stripe-customer').post(userControllerMethods.createStripeCustomer);
     app.route('/create-stripe-subscription').post(userControllerMethods.createStripeSubscription);

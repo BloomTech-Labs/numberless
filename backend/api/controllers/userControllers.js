@@ -36,7 +36,7 @@ const createUser = (req, res) => {
 const getUser = (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .select('email userPledge customerID subscriptionID voted')
+    .select('email userPledge customerID subscriptionID voted admin')
     .exec((err, user) => {
       if (err) {
         res.status(STATUS_USER_ERROR).json({ "Could not find user: ": err});
@@ -46,11 +46,23 @@ const getUser = (req, res) => {
     })
 };
 
+const getAdminUsers = (req, res) => {
+  User.find( { admin: 'true' }, (err, users) => {
+    if (err) {
+      res.status(STATUS_SERVER_ERROR).json({ "Error retrieving users": err});
+      return;
+    }
+    res.json(users);
+  })
+};
+
+
 const updateUser = (req, res) => {
   const { id } = req.params;
+  const { vote } = req.body;
   User.findOneAndUpdate(
     { "_id": id },
-    { "voted": true }
+    { "voted": vote }
   )
     .exec((err, user) => {
       if (err) {
@@ -91,6 +103,7 @@ const createStripeSubscription = (req, res) => {
 module.exports = {
   createUser,
   getUser,
+  getAdminUsers,
   updateUser,
   userLogin,
   createStripeCustomer,
