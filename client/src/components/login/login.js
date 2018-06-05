@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './login.css'
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3030';
 
 class Login extends Component {
 
@@ -16,9 +16,10 @@ class Login extends Component {
     const activeUser = axios.post(`${SERVER_URL}/login/`, user);
     activeUser
       .then(returnedUser => {
-        if (returnedUser.data.email) {
+        if (returnedUser.data._id) {
+          console.log(returnedUser);
           sessionStorage.setItem('loggedIn', 'true')
-          sessionStorage.setItem('userEmail', `${returnedUser.data.email}`);
+          sessionStorage.setItem('user', `${returnedUser.data._id}`);
           this.props.history.push('voting')
         }
       })
@@ -26,26 +27,29 @@ class Login extends Component {
 
   render() {
     return (
-      <Form className="login">
-        <FormGroup>
-          <Label className="white" for="exampleEmail">Email</Label>
-          <div className="divider"></div>
-          <Input type="email" name="email" id="email" placeholder="email" />
-        </FormGroup>
-        <FormGroup>
-          <Label className="white" for="examplePassword">Password</Label>
-          <div className="divider"></div>
-          <Input type="password" name="password" id="password" placeholder="password" />
-        </FormGroup>
-        <Button className="button" onClick={ () => {
-          let email = document.getElementById('email').value;
-          let pass = document.getElementById('password').value;
-          this.verifyUser(email, pass); 
-        }}>Sign In</Button>
-        <Button className="button" onClick={ () => {
-          this.props.history.push('newuser');
-        }}>Sign Up</Button>
-      </Form>
+      <div className="container">
+        <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
+        <div className="formBox">
+          <Form>
+            <FormGroup>
+              <Input className="input" type="email" name="email" id="email" placeholder="Email"/>
+            </FormGroup>
+            <FormGroup>
+              <Input className="input" type="password" name="password" id="password" placeholder="Password"/>
+            </FormGroup>
+            <div className="buttonBox">
+              <Button className="loginButton" onClick={ () => {
+                let email = document.getElementById('email').value;
+                let pass = document.getElementById('password').value;
+                this.verifyUser(email, pass); 
+              }}>Sign In</Button>
+              <Button className="loginButton" onClick={ () => {
+                this.props.history.push('newuser');
+              }}>Sign Up</Button>
+            </div>
+          </Form>
+        </div>
+      </div>
     );
   }
 }

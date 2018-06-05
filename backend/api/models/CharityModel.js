@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-// Create Charities Schema
-
 const CharitySchema = new mongoose.Schema({
   charity: {
     type: String,
@@ -9,7 +7,7 @@ const CharitySchema = new mongoose.Schema({
     unique: true,
   },
   image: {
-    type: String, // string to URL?
+    type: String, 
     required: true,
   },
   description: {
@@ -18,7 +16,13 @@ const CharitySchema = new mongoose.Schema({
   },
   winner: {
     type: Boolean,
+  },
+  active: {
+    type: Boolean,
+  },
+  votes: {
+    type: Number,
   }
 });
 
-module.exports = mongoose.model("Charities", CharitySchema);
+module.exports = mongoose.model('Charity', CharitySchema);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles/landing.css';
-import Pledge from './pledge.js';
 import { Link } from 'react-router-dom';
 import Info from './info.js';
 // i removed the handleChange function because it's superfluous. 
