@@ -17,12 +17,19 @@ class NewUser extends Component {
     if (sessionStorage.getItem('loggedIn')) {
       this.props.history.push('voting');
     }
-    if (this.props.userPledge) {
-      this.setState(() => ({ userPledge: this.props.userPledge }));
-    } else this.setState(() => ({ userPledge: 50 }));
+    if (this.props.location.state) {
+      this.setState(() => ({ userPledge: this.props.location.state.userPledge }));
+    } else this.setState(() => ({ userPledge: null }));
+  }
+
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState(() => ({ userPledge: this.props.location.state.userPledge }));
+    } else this.setState(() => ({ userPledge: null }));
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="container">
         <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
