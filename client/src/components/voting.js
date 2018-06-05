@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './styles/voting.css';
 import VotingCard from './votingcard.js';
-import { dummyData } from '../dummydata.js';
+import axios from 'axios';
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3030';
+
 // you will have to insert a voting-card component
 // similar to the way you had a post container in you instagram app
 // the voting-card component will go through the database
@@ -22,20 +25,54 @@ class Voting extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      pledge: 15
+      charities: [],
+      user: {}
     };
   }
 
   componentDidMount() {
-    this.setState({
-      // use axios to set the data.
-      // will pledge and user be passed by prompt
-      data: dummyData
-    });
-    // will set the state so that data comes from charity database
-    // use dummy data for now just for peace of mind
+    this.getCharities();
+    this.getUser();
   }
+  // get the current user' pledge
+  getUser = () => {
+    const currentUser =
+      sessionStorage.getItem('user') || '5b0dcc2e2547e340a3892521';
+    console.log(sessionStorage.getItem('user'));
+    axios
+      .get(`${SERVER_URL}/users/${currentUser}`)
+      .then(response => {
+        this.setState({
+          user: response.data
+        });
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.error('error getting data');
+      });
+  };
+  // get the current active charities
+
+  getCharities = () => {
+    const charities = [];
+    axios
+      .get(`${SERVER_URL}/charities`)
+      .then(response => {
+        response.data.forEach(e => {
+          if (e.active === true) {
+            charities.push(e);
+          }
+        });
+        this.setState({
+          charities: charities
+        });
+      })
+      .catch(() => {
+        console.error('error getting data');
+      });
+  };
+
+  addCharityVotes = () => {};
 
   render() {
     return (
@@ -44,8 +81,9 @@ class Voting extends Component {
           <h1 className="votingHeading">VOTE</h1>
           <h3 className="votingHeading">FOR THIS MONTHS CHARITY</h3>
         </header>
+
         <div>
-          <VotingCard charity={this.state.data} />
+          <VotingCard charities={this.state.charities} user={this.state.user} />
         </div>
       </div>
     );
