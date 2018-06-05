@@ -17,6 +17,7 @@ class Login extends Component {
     activeUser
       .then(returnedUser => {
         if (returnedUser.data._id) {
+          console.log(returnedUser);
           sessionStorage.setItem('loggedIn', 'true')
           sessionStorage.setItem('user', `${returnedUser.data._id}`);
           this.props.history.push('voting')
