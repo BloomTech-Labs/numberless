@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import {
   CardElement,
   injectStripe,
@@ -139,7 +139,7 @@ class _StripeForm extends Component {
             Submit
           </Button>
         </Form>
-        <a href="https://stripe.com/" target="_blank">
+        <a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">
           <img className="stripeLogo" src={require('../static/powered_by_stripe.png')} alt="Stripe" />
         </a>
       </div>
