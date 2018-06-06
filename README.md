@@ -125,6 +125,8 @@ email: {
 
 * **/charities/:id** - PUT - Takes in an `id` from the params and a `vote` from the request body, which is the number of votes to be added to the, charity's `votes` value. Increments the votes accordingly. 
 
+* **/charities/:id** - GET - Takes in an `id` from the params and returns the charity matching that `id`.
+
 ## Middleware
 
 * **hashPassword** - Uses `bcrypt` to encrypt the user's password before it hits the database.

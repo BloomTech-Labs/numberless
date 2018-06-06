@@ -14,4 +14,5 @@ module.exports = (app) => {
     app.route('/create-charity').post(charityControllerMethods.createCharity);
     app.route('/charities').get(charityControllerMethods.getCharities);
     app.route('/charities/:id').put(charityControllerMethods.updateCharity);
+    app.route('/charities/:id').get(charityControllerMethods.getCharity);
 }
