@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Elements } from 'react-stripe-elements';
 
 import StripeForm from './stripeForm';
+import Loader from './loader';
 
 import './newUser.css'
 
@@ -19,19 +20,17 @@ class NewUser extends Component {
     }
     if (this.props.location.state) {
       this.setState(() => ({ userPledge: this.props.location.state.userPledge }));
-    } else this.setState(() => ({ userPledge: null }));
+    }
   }
 
-  componentDidMount() {
-    if (this.props.location.state) {
-      this.setState(() => ({ userPledge: this.props.location.state.userPledge }));
-    } else this.setState(() => ({ userPledge: null }));
+  onSubmit() {
+    
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="container">
+        <Loader/>
         <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
         <Elements>
           <StripeForm userPledge={this.state.userPledge} history={this.props.history} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import axios from 'axios';
 
 import './login.css'
@@ -17,10 +17,13 @@ class Login extends Component {
     activeUser
       .then(returnedUser => {
         if (returnedUser.data._id) {
-          console.log(returnedUser);
           sessionStorage.setItem('loggedIn', 'true')
           sessionStorage.setItem('user', `${returnedUser.data._id}`);
-          this.props.history.push('voting')
+          if (returnedUser.data.admin === true) {
+            this.props.history.push('admin');
+          } else {
+            this.props.history.push('voting')
+          }
         }
       })
   }

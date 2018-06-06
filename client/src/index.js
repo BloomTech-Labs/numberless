@@ -30,6 +30,7 @@ ReactDOM.render(
 				<Route exact path="/newuser" component={NewUser}/>
 				<Route exact path="/login" component={Login}/>
 				<Route exact path="/info" component={Info} />
+				<Route exact path="/admin" component={Admin} />
 			</div>
 		</Router>
 	</StripeProvider>, 
