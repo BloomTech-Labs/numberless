@@ -1,0 +1,10 @@
+.adminContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-family: Open Sans, sans-serif;
+}
+
+.adminContainer p {
+  color: #666666;
+}
