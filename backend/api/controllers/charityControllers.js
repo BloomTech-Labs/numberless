@@ -38,6 +38,17 @@ const getCharities = (req, res) => {
   })
 };
 
+const getCharity = (req, res) => {
+  const { id } = req.params;
+  Charity.findOne( { "_id": id }, (err, charity) => {
+    if (err) {
+      res.status(STATUS_SERVER_ERROR).json({ "Error retrieving charity": err});
+      return;
+    }
+    res.json(charity);
+  })
+};
+
 const updateCharity = (req, res) => {
   const { id } = req.params;
   const { vote } = req.body;
@@ -56,6 +67,7 @@ const updateCharity = (req, res) => {
 
 module.exports = {
   createCharity,
+  getCharity,
   getCharities,
   updateCharity
 }

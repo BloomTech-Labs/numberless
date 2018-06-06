@@ -58,6 +58,10 @@ button:hover {
   margin-bottom: 100px;
 }
 
+.stripeLogo {
+  margin-top: 20px;
+}
+
 Form {
   width: 80%;
 }

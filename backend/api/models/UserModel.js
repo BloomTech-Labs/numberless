@@ -21,7 +21,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
   voted: {
-    type: Boolean,
+    type: String,
+  },
+  admin: {
+    type: Boolean
   }
 });
 
