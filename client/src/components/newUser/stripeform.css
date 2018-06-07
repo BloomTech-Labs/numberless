@@ -1,4 +1,4 @@
-button {
+.stripeButton {
   white-space: nowrap;
   border: 0;
   outline: 0;
@@ -21,7 +21,7 @@ button {
 }
 
 
-button:hover {
+.stripeButton:hover {
   cursor: pointer;
   transform: scale(1.02) perspective(1px);
   background-color: #666666;
