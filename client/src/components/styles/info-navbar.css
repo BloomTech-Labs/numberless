@@ -2,9 +2,7 @@
   font-family: 'Open Sans', sans-serif;
   background-color: #e8e8e8;
   /* position: absolute; */
-
   width: 100%;
-  color: orchid;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,9 +11,8 @@
   margin: auto;
 }
 .nav {
-  display: inline-flex;
-  color: #808080;
   text-align: left;
+  display: inline-flex;
 }
 .nav ul {
   list-style: none;
@@ -28,6 +25,14 @@
   padding: 0 16px;
   line-height: inherit;
   cursor: pointer;
+  text-decoration: none;
+  color: #e8e8e8;
+  /* color: #808080; */
+}
+.nav a span {
+  color: #808080;
+  font-weight: 800;
+  font-size: 0.9rem;
 }
 .nav__menu {
   line-height: 45px;
@@ -37,10 +42,12 @@
 .nav__menu-item {
   display: inline-block;
   position: relative;
+  text-decoration: none;
 }
-/* .nav__menu-item:hover {
-
-} */
+.nav__menu-item:hover {
+  color: #d89519;
+  font-weight: 400;
+}
 .nav__menu-item .nav__submenu {
   display: block;
 }
@@ -49,18 +56,16 @@
   text-transform: none;
   display: none;
   position: absolute;
-  width: 180px;
+  width: 100px;
   background-color: #808080;
-  color: #e8e8e8;
-  text-decoration: none;
 }
 .nav__submenu-item:hover {
   background-color: #666666;
-  color: #000000;
-  text-decoration: none;
+  color: #e8e8e8;
+  font-weight: 400;
 }
-.menuIcon {
-  width: 25px;
-  height: 5px;
-  background-color: #808080;
+.navLogo {
+  max-width: 90%;
+  height: auto;
+  padding: 0.1rem 0.8rem;
 }

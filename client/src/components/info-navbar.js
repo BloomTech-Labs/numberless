@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './styles/info-navbar.css';
+
+// should I change to const
 class InfoNavBar extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,9 @@ class InfoNavBar extends Component {
         <nav className="nav flex-item">
           <ul className="nav__menu">
             <li className="nav__menu-item" onMouseLeave={this.handleLeave}>
-              <a onMouseEnter={this.handleHover}>&#9776;</a>
+              <a onMouseEnter={this.handleHover}>
+                <span>&#9776;</span>
+              </a>
               {this.state.showAboutMenu && (
                 <ul className="nav__submenu">
                   <li className="nav__submenu-item ">
@@ -45,7 +49,7 @@ class InfoNavBar extends Component {
 
         <div>
           <img
-            className="logo flex_item"
+            className="navLogo"
             src={require('./static/logo.png')}
             alt="Numberless"
           />
