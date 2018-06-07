@@ -12,7 +12,6 @@ const UserSchema = new mongoose.Schema({
   },
   userPledge: {
     type: Number,
-    required: true,
   },
   customerID: {
     type: String,
@@ -21,7 +20,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
   voted: {
-    type: Boolean,
+    type: String,
+  },
+  admin: {
+    type: Boolean
   }
 });
 

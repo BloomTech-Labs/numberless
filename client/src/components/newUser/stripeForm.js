@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import {
   CardElement,
   injectStripe,
@@ -22,7 +23,7 @@ class _StripeForm extends Component {
       userPledge: null,
       customerID: null,
       subscriptionID: null,
-      voted: false,
+      voted: null,
     }
   }
 
@@ -68,12 +69,14 @@ class _StripeForm extends Component {
   addSubscription = () => {
     let product = null;
     if (this.state.userPledge === 50) {
-      product = process.env.STRIPE_PLAN_50 || 'plan_Cwq75ozX5poOY2';
-    } else if (this.state.userPledge === 25) {
-      product = process.env.STRIPE_PLAN_25;
-    } else {
-      product = process.env.STRIPE_PLAN_10;
-    }
+      product = process.env.REACT_APP_STRIPE_PLAN_50;
+    } 
+    if (this.state.userPledge === 25) {
+      product = process.env.REACT_APP_STRIPE_PLAN_25;
+    } 
+    if (this.state.userPledge === 10) {
+      product = process.env.REACT_APP_STRIPE_PLAN_10;
+    } 
     axios.post(`${SERVER_URL}/create-stripe-subscription`,
       {
         customer: this.state.customerID,
@@ -123,23 +126,23 @@ class _StripeForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Email
-          <input className="stripeInput" id="email" />
-        </label>
-        <label>
-          Password
-          <input className="stripeInput" id="pass" />
-        </label>
-        <label>
-          Subscription Info
-          <CardElement className='stripeInput'/>
-        </label>
-        <button>
-          Submit
-        </button>
-      </form>
+      <div className="formBox">
+        <Form>
+            <FormGroup>
+              <Input className="input" type="email" name="email" id="email" placeholder="Email"/>
+            </FormGroup>
+            <FormGroup>
+              <Input className="input" type="password" name="password" id="pass" placeholder="Password"/>
+            </FormGroup>
+            <CardElement className='stripeInput'/>
+          <Button className="stripeButton" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+        </Form>
+        <a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">
+          <img className="stripeLogo" src={require('../static/powered_by_stripe.png')} alt="Stripe" />
+        </a>
+      </div>
     );
   }
 }

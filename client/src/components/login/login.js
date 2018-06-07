@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import axios from 'axios';
 
 import './login.css'
@@ -19,33 +19,37 @@ class Login extends Component {
         if (returnedUser.data._id) {
           sessionStorage.setItem('loggedIn', 'true')
           sessionStorage.setItem('user', `${returnedUser.data._id}`);
-          this.props.history.push('voting')
+          if (returnedUser.data.admin === true) {
+            this.props.history.push('admin');
+          } else {
+            this.props.history.push('voting')
+          }
         }
       })
   }
 
   render() {
     return (
-      <div className="container">
-        <img src="...src/static/logo.png" alt="Numberless" />
-        <div className="formbox">
+      <div className="loginContainer">
+        <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
+        <div className="formBox">
           <Form>
             <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="email" placeholder="with a placeholder" />
+              <Input className="input" type="email" name="email" id="email" placeholder="Email"/>
             </FormGroup>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input type="password" name="password" id="password" placeholder="password placeholder" />
+              <Input className="input" type="password" name="password" id="password" placeholder="Password"/>
             </FormGroup>
-            <Button onClick={ () => {
-              let email = document.getElementById('email').value;
-              let pass = document.getElementById('password').value;
-              this.verifyUser(email, pass); 
-            }}>Sign In</Button>
-            <Button onClick={ () => {
-              this.props.history.push('newuser');
-            }}>Sign Up</Button>
+            <div className="buttonBox">
+              <Button className="stripeButton" onClick={ () => {
+                let email = document.getElementById('email').value;
+                let pass = document.getElementById('password').value;
+                this.verifyUser(email, pass); 
+              }}>Sign In</Button>
+              <Button className="stripeButton" onClick={ () => {
+                this.props.history.push('newuser');
+              }}>Sign Up</Button>
+            </div>
           </Form>
         </div>
       </div>
