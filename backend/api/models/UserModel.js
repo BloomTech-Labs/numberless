@@ -12,7 +12,6 @@ const UserSchema = new mongoose.Schema({
   },
   userPledge: {
     type: Number,
-    required: true,
   },
   customerID: {
     type: String,
