@@ -1,25 +1,58 @@
-// // my navbar needs to have the following components:
-// // dropdown menu
-// // infinity sign next to numberless - logo
-// // then it needs to display an image. 
-// 	// for now i can screenshot the image and render it locally that way
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import './styles/info-navbar.css';
+class InfoNavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAboutMenu: false
+    };
+  }
 
-// import React, { Component } from 'react';
-// import './navbar.css';
+  handleHover = () => {
+    this.setState({ showAboutMenu: true });
+  };
 
-// class NavBar extends Component {
-// 	constructor() {
-// 		super();
-// 	}
+  handleLeave = () => {
+    this.setState({ showAboutMenu: false });
+  };
+  render() {
+    return (
+      <div className="navbar">
+        <nav className="nav flex-item">
+          <ul className="nav__menu">
+            <li className="nav__menu-item" onMouseLeave={this.handleLeave}>
+              <a onMouseEnter={this.handleHover}>&#9776;</a>
+              {this.state.showAboutMenu && (
+                <ul className="nav__submenu">
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/newuser">Sign Up</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/pledge">Pledge</NavLink>
+                  </li>
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
 
-// 	render() {
-// 		return (
-// 			<div className="NavBar_container">
-// 				<img src="" placeholder="menu"/>
-// 				<img src="" placeholder="logo"/>
-// 			</div>
-// 		)
-// 	}
-// } 
+        <div>
+          <img
+            className="logo flex_item"
+            src={require('./static/logo.png')}
+            alt="Numberless"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 
-// export default NavBar;
+export default InfoNavBar;
