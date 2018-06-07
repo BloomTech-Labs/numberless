@@ -29,7 +29,7 @@ class NewUser extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="userContainer">
         <Loader/>
         <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
         <Elements>

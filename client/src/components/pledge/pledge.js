@@ -20,7 +20,7 @@ class Pledge extends Component {
 	render() {
 		return (
 			<div className="pledgeContainer">
-				<div className="card">
+				<div className="pledgeCard">
 					<p>PLEDGE</p>
 					<div className="pledgeBox">
 						<div className="pledgeButton">

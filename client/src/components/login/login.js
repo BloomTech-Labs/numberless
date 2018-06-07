@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="loginContainer">
         <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
         <div className="formBox">
           <Form>
@@ -41,12 +41,12 @@ class Login extends Component {
               <Input className="input" type="password" name="password" id="password" placeholder="Password"/>
             </FormGroup>
             <div className="buttonBox">
-              <Button className="loginButton" onClick={ () => {
+              <Button className="stripeButton" onClick={ () => {
                 let email = document.getElementById('email').value;
                 let pass = document.getElementById('password').value;
                 this.verifyUser(email, pass); 
               }}>Sign In</Button>
-              <Button className="loginButton" onClick={ () => {
+              <Button className="stripeButton" onClick={ () => {
                 this.props.history.push('newuser');
               }}>Sign Up</Button>
             </div>

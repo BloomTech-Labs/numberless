@@ -135,7 +135,7 @@ class _StripeForm extends Component {
               <Input className="input" type="password" name="password" id="pass" placeholder="Password"/>
             </FormGroup>
             <CardElement className='stripeInput'/>
-          <Button onClick={this.handleSubmit}>
+          <Button className="stripeButton" onClick={this.handleSubmit}>
             Submit
           </Button>
         </Form>
