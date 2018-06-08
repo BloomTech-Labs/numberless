@@ -12,18 +12,22 @@ export default class Loader extends Component {
 
   showPage() {
     document.getElementById("loader").style.display = "none";
+    document.getElementById("loaderText").style.display = "none";
     document.getElementById("complete").style.display = "block";
   }
   
   render() {
-    return (
-      <div>
-        <div style={{ display:'none' }} id="loader"></div>
-        <div style={{ display:'none' }} id="complete" className="animate-bottom">
-          <h2>Tada!</h2>
-          <p>Some text in my newly loaded page..</p>
+    if (this.props.loading) {
+      this.start();
+      return (
+        <div className="loaderBox">
+          <div style={{ display:'block' }} id="loader"></div>
+          <div style={{ display: 'block'}} id="loaderText">This will only take a moment...</div>
+          <div style={{ display:'none' }} id="complete" className="animate-bottom">
+            Thank you!
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else return null;
   } 
 }

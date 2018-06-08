@@ -25,6 +25,7 @@ class _StripeForm extends Component {
       subscriptionID: null,
       voted: null,
     }
+    this.nextPage = this.nextPage.bind(this);
   }
 
   // the following function sets the user's pledge amount to the incoming prop from the pledge component
@@ -37,6 +38,7 @@ class _StripeForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
+    this.props.onSubmit();
     this.props.stripe.createToken().then(payload => {
       if (payload.token) {
         this.onToken(payload.token);
@@ -95,7 +97,18 @@ class _StripeForm extends Component {
   }
 
   // the following code creates a new user in the numberless database, then upon creation moves the user to the 
-  // voting page, setting sessionStorage and a cookie
+  // voting page, setting sessionStorage and a cookie, it also sets a timeout for the push to the next page
+  // for the loading animation
+
+  timer;
+
+  start() {
+    this.timer = setTimeout(this.nextPage, 2000);
+  }
+
+  nextPage() {
+    this.props.history.push('voting');
+  }
 
   createUser = () => {
     const {
@@ -119,12 +132,23 @@ class _StripeForm extends Component {
       if (createdUser.data._id) {
         sessionStorage.setItem('user', createdUser.data._id);
         sessionStorage.setItem('loggedIn', 'true');
-        this.props.history.push('voting');
+        this.start();
       }
     })
   }
 
   render() {
+    const style = this.props.windowSize < 500 ? { 
+      base: {
+        fontFamily: '"Open Sans", sans-serif',
+        fontSize: '.9rem',
+      } 
+    } : {
+      base: {
+        fontFamily: '"Open Sans", sans-serif',
+        fontSize: '1.1rem',
+      }
+    }
     return (
       <div className="formBox">
         <Form>
@@ -134,7 +158,7 @@ class _StripeForm extends Component {
             <FormGroup>
               <Input className="input" type="password" name="password" id="pass" placeholder="Password"/>
             </FormGroup>
-            <CardElement className='stripeInput'/>
+            <CardElement className='stripeInput' style={ style }/>
           <Button className="stripeButton" onClick={this.handleSubmit}>
             Submit
           </Button>

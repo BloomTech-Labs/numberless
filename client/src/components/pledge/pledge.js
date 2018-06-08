@@ -6,7 +6,6 @@ import './pledge.css';
 class Pledge extends Component {
 	constructor() {
 		super();
-		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentWillMount(){
@@ -15,7 +14,7 @@ class Pledge extends Component {
 		}
 	}
 
-	linkStyle = { textDecoration: 'none', color: '#234980', fontFamily: 'Open Sans',fontSize: '40pt', fontWeight: 700 }
+	linkStyle = { textDecoration: 'none', color: '#234980', fontFamily: 'Open Sans',fontSize: '3.5rem', fontWeight: 700 }
 
 	render() {
 		return (
@@ -42,11 +41,6 @@ class Pledge extends Component {
 				</div>
 			</div>
 		)
-	}
-
-	handleChange(event) {
-		// not sure what this function should do - I assume
-		// this page/function should be integrated with stripe.
 	}
 }
 

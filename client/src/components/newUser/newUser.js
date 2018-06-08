@@ -10,8 +10,11 @@ class NewUser extends Component {
   constructor() {
     super();
     this.state = {
-      userPledge: null
+      userPledge: null,
+      loading: false,
+      windowSize: null
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillMount(){
@@ -19,22 +22,28 @@ class NewUser extends Component {
       this.props.history.push('voting');
     }
     if (this.props.location.state) {
-      this.setState(() => ({ userPledge: this.props.location.state.userPledge }));
+      this.setState(() => ({ 
+        userPledge: this.props.location.state.userPledge,
+        windowSize: window.innerWidth
+       }));
     }
   }
 
   onSubmit() {
-    
+    document.getElementById("userContainer").style.display=('none');
+    this.setState(() => ({ loading: true }));
   }
 
   render() {
     return (
-      <div className="userContainer">
-        <Loader/>
-        <img className="logo" src={require('../static/logo.png')} alt="Numberless" />
-        <Elements>
-          <StripeForm userPledge={this.state.userPledge} history={this.props.history} />
-        </Elements>
+      <div className="mainContainer">
+        <Loader loading={this.state.loading}/>
+        <div className="userContainer" id="userContainer">
+          <img className="logo" id="logo" src={require('../static/logo.png')} alt="Numberless" />
+          <Elements>
+            <StripeForm  onSubmit={this.onSubmit} userPledge={this.state.userPledge} history={this.props.history} windowSize={this.state.windowSize}/>
+          </Elements>
+        </div>
       </div>
     );
   }
