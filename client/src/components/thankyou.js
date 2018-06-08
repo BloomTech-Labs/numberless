@@ -2,41 +2,83 @@ import React, { Component } from 'react';
 import './styles/thankyou.css';
 import { Link } from 'react-router-dom';
 import Landing from './landing.js';
+import axios from 'axios';
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3030';
 
 class ThankYou extends Component {
-  constructor() {
-    super();
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = { charity: '', user: '' };
+
+  // get the current user from db
+  getUser = () => {
+    const currentUser = sessionStorage.getItem('user');
+    axios
+      .get(`${SERVER_URL}/users/${currentUser}`)
+      .then(response => {
+        this.setState({
+          user: response.data
+        });
+        //console.log(response.data);
+      })
+      .catch(() => {
+        console.error('error getting data');
+      });
+  };
+
+  getCharity = () => {
+    let charity = '';
+
+    axios
+      .get(`${SERVER_URL}/charities/${charity}`)
+      .then(response => {
+        this.setState({
+          user: response.data
+        });
+        //console.log(response.data);
+      })
+      .catch(() => {
+        console.error('error getting data');
+      });
+  };
 
   render() {
     return (
-      <div className="thankyou">
-        <img
-          src={require('./static/thankyou.jpg')}
-          height="150"
-          width="150"
-          placeholder="Thanks"
-        />
-        <p className="title">Thank You!</p>
-        <p>YOUR VOTE HAS BEEN CAST</p>
-        <p>
-          This months donation has been allocated to Operation Underground
-          Railroad.
-        </p>
-        <Link to="/landing">
-          <input
-            className="thankyou-button"
-            value="RETURN HOME"
-            type="submit"
+      <div className="thankyu">
+        <div>
+          <img
+            src={require('./static/thankyou.jpg')}
+            height="150"
+            width="150"
+            placeholder="Thanks"
           />
-        </Link>
+          <p className="title">Thank You!</p>
+          <p>YOUR VOTE HAS BEEN CAST</p>
+        </div>
+
+        <div>
+          <p>This months donation has been allocated to {this.state.charity}</p>
+        </div>
+
+        <div>
+          <Link to="/landing">
+            <input
+              className="thankyou-button"
+              value="RETURN HOME"
+              type="submit"
+            />
+          </Link>
+        </div>
+
+        <div>
+          <div>
+            <h2> GROW NUMBERLESS</h2>
+          </div>
+          <div>
+            <h2> INCREASE MY PLEDGE</h2>
+          </div>
+        </div>
       </div>
     );
-  }
-
-  handleChange(event) {
-    // this button will need to link back to the landing page
   }
 }
 

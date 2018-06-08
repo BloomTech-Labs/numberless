@@ -1,25 +1,62 @@
-// // my navbar needs to have the following components:
-// // dropdown menu
-// // infinity sign next to numberless - logo
-// // then it needs to display an image. 
-// 	// for now i can screenshot the image and render it locally that way
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import './styles/info-navbar.css';
 
-// import React, { Component } from 'react';
-// import './navbar.css';
+// should I change to const
+class InfoNavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAboutMenu: false
+    };
+  }
 
-// class NavBar extends Component {
-// 	constructor() {
-// 		super();
-// 	}
+  handleHover = () => {
+    this.setState({ showAboutMenu: true });
+  };
 
-// 	render() {
-// 		return (
-// 			<div className="NavBar_container">
-// 				<img src="" placeholder="menu"/>
-// 				<img src="" placeholder="logo"/>
-// 			</div>
-// 		)
-// 	}
-// } 
+  handleLeave = () => {
+    this.setState({ showAboutMenu: false });
+  };
+  render() {
+    return (
+      <div className="navbar">
+        <nav className="nav flex-item">
+          <ul className="nav__menu">
+            <li className="nav__menu-item" onMouseLeave={this.handleLeave}>
+              <a onMouseEnter={this.handleHover}>
+                <span>&#9776;</span>
+              </a>
+              {this.state.showAboutMenu && (
+                <ul className="nav__submenu">
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/newuser">Sign Up</NavLink>
+                  </li>
+                  <li className="nav__submenu-item ">
+                    <NavLink to="/pledge">Pledge</NavLink>
+                  </li>
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
 
-// export default NavBar;
+        <div>
+          <img
+            className="navLogo"
+            src={require('./static/logo.png')}
+            alt="Numberless"
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default InfoNavBar;
