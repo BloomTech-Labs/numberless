@@ -12,7 +12,8 @@ class NewUser extends Component {
     this.state = {
       userPledge: null,
       loading: false,
-      windowSize: null
+      windowSize: null,
+      loadFinish: false
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -41,7 +42,11 @@ class NewUser extends Component {
         <div className="userContainer" id="userContainer">
           <img className="logo" id="logo" src={require('../static/logo.png')} alt="Numberless" />
           <Elements>
-            <StripeForm  onSubmit={this.onSubmit} userPledge={this.state.userPledge} history={this.props.history} windowSize={this.state.windowSize}/>
+            <StripeForm  
+              onSubmit={this.onSubmit} 
+              userPledge={this.state.userPledge} 
+              history={this.props.history} 
+              windowSize={this.state.windowSize}/>
           </Elements>
         </div>
       </div>

@@ -3,11 +3,16 @@ import React, { Component } from 'react';
 import "./loader.css"
 
 export default class Loader extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   timer;
 
+  finishTimer;
+
   start() {
-    this.timer = setTimeout(this.showPage, 3000);
+    this.timer = setTimeout(this.showPage, 2000);
   }
 
   showPage() {
