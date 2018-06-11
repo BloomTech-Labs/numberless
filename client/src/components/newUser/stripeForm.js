@@ -130,6 +130,7 @@ class _StripeForm extends Component {
     })
     .then(createdUser => {
       if (createdUser.data._id) {
+        console.log(this.props.loadFinish);
         sessionStorage.setItem('user', createdUser.data._id);
         sessionStorage.setItem('loggedIn', 'true');
         this.start();
