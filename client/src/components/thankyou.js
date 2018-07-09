@@ -43,7 +43,7 @@ class ThankYou extends Component {
 
   render() {
     return (
-      <div className="thankyu">
+      <div className="thankyou">
         <div>
           <img
             src={require('./static/thankyou.jpg')}
