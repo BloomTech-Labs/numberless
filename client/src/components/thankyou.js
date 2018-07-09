@@ -68,15 +68,6 @@ class ThankYou extends Component {
             />
           </Link>
         </div>
-
-        <div>
-          <div>
-            <h2> GROW NUMBERLESS</h2>
-          </div>
-          <div>
-            <h2> INCREASE MY PLEDGE</h2>
-          </div>
-        </div>
       </div>
     );
   }
